@@ -1,0 +1,42 @@
+doctype html
+html
+	head
+		title Flot Examples: Categories
+		link(rel="stylesheet", type="text/css", href="http://127.0.0.1/files/main.css")
+		meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
+		script(language="javascript", type="text/javascript", src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js")
+		script(language="javascript", type="text/javascript", src="http://cdnjs.cloudflare.com/ajax/libs/flot/0.8.1/jquery.flot.min.js")
+		script(language="javascript", type="text/javascript", src="http://127.0.0.1/files/jquery.flot.categories.js")
+		script.
+			$(function() {
+				var data = !{JSON.stringify(data)};
+				console.info (data);
+
+				$.plot("#placeholder", [ data.sort() ], {
+					series: {
+						bars: {
+							show: true,
+							barWidth: 0.6,
+							align: "center"
+						}
+					},
+					xaxis: {
+						mode: "categories",
+						tickLength: 0
+					}
+				});
+
+				// Add the Flot version string to the footer
+				$("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
+			});
+	body
+		div(id="header")
+			h2=header
+		div(id="content")
+			div(class="demo-container")
+				div(id="placeholder", class="demo-placeholder")
+			p=description
+			p Raw data:&#160;
+				span=data
+
+		div(id="footer") Copyright &copy; 2007 - 2013 IOLA and Ole Laursen
